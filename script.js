@@ -5,14 +5,21 @@ let calc = {
     operator: null
 }
 
+function resetCalc() {
+    calc.display = '0',
+        calc.operand1 = null,
+        calc.operand2 = false,
+        calc.operator = null
+    console.log(calc);
+}
+
 function inputDigit(digit) {
     const { display, operand2 } = calc;
 
     if (operand2 === true) {
         calc.display = digit;
         calc.operand2 = false;
-    }
-    else {
+    } else {
         calc.display = display === '0' ? digit : display + digit;
     }
 
@@ -40,7 +47,7 @@ function handleOperator(next) {
     }
     calc.operand2 = true;
     calc.operator = next;
-    console.log("calc " , calc);
+    console.log("calc ", calc);
 }
 
 const performCalc = {
@@ -48,7 +55,7 @@ const performCalc = {
     '*': (operand1, operand2) => operand1 * operand2,
     '+': (operand1, operand2) => operand1 + operand2,
     '-': (operand1, operand2) => operand1 - operand2,
-    '=': (operand1, operand2) =>  operand2 
+    '=': (operand1, operand2) => operand2
 
 }
 const keys = document.querySelector('.keys');
@@ -73,7 +80,8 @@ keys.addEventListener('click', (event) => {
     }
 
     if (target.classList.contains('clear')) {
-
+        resetCalc();
+        updateDisplay();
         return;
     }
 

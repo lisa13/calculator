@@ -72,3 +72,9 @@ button:focus {
     width: 95%;
     margin-top: 2%;
 }
+
+img{
+    margin: 5px 20px 0 0 ;
+    width: 75px;
+    height: 75px;
+}
